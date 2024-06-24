@@ -8,5 +8,5 @@ public class PhotosSummary
     public int Count { get; set; }
 
     [JsonPropertyName("primary")]
-    public PhotoSummaryPrimary Primary { get; set; }
+    public PhotosSummaryPrimary Primary { get; set; }
 }

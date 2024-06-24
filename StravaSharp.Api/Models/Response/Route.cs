@@ -56,7 +56,7 @@ public class Route
     public int EstimatedMovingTime { get; set; }
 
     [JsonPropertyName("segments")]
-    public SummarySegments Segments { get; set; }
+    public SummarySegment[] Segments { get; set; }
 
     [JsonPropertyName("waypoints")]
     public Waypoint Waypoints { get; set; }

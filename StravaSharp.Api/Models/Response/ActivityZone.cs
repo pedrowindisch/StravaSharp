@@ -9,7 +9,7 @@ public class ActivityZone
     public required int Score { get; set; }
 
     [JsonPropertyName("distribution_buckets")]
-    public DistributionBucket[] DistributionBuckets { get; set; } = [];
+    public TimedZoneRange[] DistributionBuckets { get; set; } = [];
 
     [JsonPropertyName("type")]
     [AllowedValues(["heartrate", "power"])]

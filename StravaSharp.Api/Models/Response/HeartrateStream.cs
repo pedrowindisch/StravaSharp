@@ -1,21 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using StravaSharp.Api.Models.Response.Base;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class HeartrateStream
+public class HeartrateStream : BaseStream<int[]>
 {
-    [JsonPropertyName("original_size")]
-    public required int OriginalSize { get; set; }
-
-    [JsonPropertyName("resolution")]
-    [AllowedValues(["low", "medium", "high"])]
-    public required string Resolution { get; set; }
-
-    [JsonPropertyName("series_type")]
-    [AllowedValues(["distance", "time"])]
-    public required string SeriesType { get; set; }
-
-    [JsonPropertyName("data")]
-    public required int[] Data { get; set; } = [];
+    
 }

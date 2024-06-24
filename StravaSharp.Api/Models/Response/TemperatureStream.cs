@@ -4,7 +4,7 @@ using StravaSharp.Api.Models.Response.Base;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class AltitudeStream : BaseStream<double[]>
+public class TemperatureStream : BaseStream<int[]>
 {
 
 }
