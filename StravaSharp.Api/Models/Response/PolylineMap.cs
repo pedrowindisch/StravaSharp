@@ -7,8 +7,9 @@ public class PolylineMap
     [JsonPropertyName("id")]
     public required string Id { get; set; }
 
-    [JsonPropertyName("polyline")]
-    public required string Polyline { get; set; }
+    [JsonPropertyName("resource_state")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public required ResourceState ResourceState { get; set; }
 
     [JsonPropertyName("summary_polyline")]
     public required string SummaryPolyline { get; set; }

@@ -3,15 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class DetailedAthlete
+public class DetailedAthlete : BaseDetailed
 {
-    [JsonPropertyName("id")]
-    public required int Id { get; set; }
-
-    [JsonPropertyName("resource_state")]
-    [AllowedValues([1, 2, 3])]
-    public required int ResourceState { get; set; }
-
     [JsonPropertyName("firstname")]
     public required string FirstName { get; set; }
 

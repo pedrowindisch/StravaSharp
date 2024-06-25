@@ -1,8 +1,9 @@
 using System.Text.Json.Serialization;
+using StravaSharp.Api.Models.Response;
 
-namespace StravaSharp.Api.Models.Response;
+namespace StravaSharp.Api.Models.Request;
 
-public class UpdatableActivity
+public class ActivityUpdate
 {
     [JsonPropertyName("commute")]
     public bool Commute { get; set; }
@@ -20,9 +21,11 @@ public class UpdatableActivity
     public required string Name { get; set; }
 
     [JsonPropertyName("type")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public ActivityType? Type { get; set; }
 
     [JsonPropertyName("sport_type")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public SportType? SportType { get; set; }
 
     [JsonPropertyName("gear_id")]

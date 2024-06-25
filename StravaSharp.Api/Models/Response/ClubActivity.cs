@@ -23,10 +23,12 @@ public class ClubActivity
     public float TotalElevationGain { get; set; }
 
     [JsonPropertyName("type")]
-    public ActivityType Type { get; set; }
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public ActivityType? Type { get; set; }
 
     [JsonPropertyName("sport_type")]
-    public SportType SportType { get; set; }
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public SportType? SportType { get; set; }
 
     [JsonPropertyName("workout_type")]
     public int WorkoutType { get; set; }

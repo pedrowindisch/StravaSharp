@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using StravaSharp.Api.Commons.JsonConverters;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class DetailedSegment
+public class DetailedSegment : BaseDetailed
 {
-    [JsonPropertyName("id")]
-    public long Id { get; set; }
-
     [JsonPropertyName("name")]
     public required string Name { get; set; }
 
@@ -31,9 +29,11 @@ public class DetailedSegment
     public double ElevationLow { get; set; }
 
     [JsonPropertyName("start_latlng")]
+    [JsonConverter(typeof(LatLngJsonConverter))]
     public required LatLng StartLatLng { get; set; }
 
     [JsonPropertyName("end_latlng")]
+    [JsonConverter(typeof(LatLngJsonConverter))]
     public required LatLng EndLatLng { get; set; }
 
     [JsonPropertyName("climb_category")]

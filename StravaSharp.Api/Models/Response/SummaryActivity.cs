@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using StravaSharp.Api.Commons.JsonConverters;
 
 namespace StravaSharp.Api.Models.Response;
 
@@ -11,7 +12,7 @@ public class SummaryActivity
     public required string ExternalId { get; set; }
 
     [JsonPropertyName("upload_id")]
-    public required long UploadId { get; set; }
+    public long? UploadId { get; set; }
 
     [JsonPropertyName("athlete")]
     public required MetaAthlete Athlete { get; set; }
@@ -38,9 +39,11 @@ public class SummaryActivity
     public required double ElevLow { get; set; }
 
     [JsonPropertyName("type")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public ActivityType? Type { get; set; }
 
     [JsonPropertyName("sport_type")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public SportType? SportType { get; set; }
 
     [JsonPropertyName("start_date")]
@@ -53,9 +56,11 @@ public class SummaryActivity
     public required string Timezone { get; set; }
 
     [JsonPropertyName("start_latlng")]
+    [JsonConverter(typeof(LatLngJsonConverter))]
     public required LatLng StartLatLng { get; set; }
 
     [JsonPropertyName("end_latlng")]
+    [JsonConverter(typeof(LatLngJsonConverter))]
     public required LatLng EndLatLng { get; set; }
 
     [JsonPropertyName("achievement_count")]

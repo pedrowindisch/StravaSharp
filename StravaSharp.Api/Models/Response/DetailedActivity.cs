@@ -1,17 +1,15 @@
 using System.Text.Json.Serialization;
+using StravaSharp.Api.Commons.JsonConverters;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class DetailedActivity
+public class DetailedActivity : BaseDetailed
 {
-    [JsonPropertyName("id")]
-    public required long Id { get; set; }
-
     [JsonPropertyName("external_id")]
     public required string ExternalId { get; set; }
 
     [JsonPropertyName("upload_id")]
-    public required long UploadId { get; set; }
+    public long? UploadId { get; set; }
 
     [JsonPropertyName("athlete")]
     public required MetaAthlete Athlete { get; set; }
@@ -38,9 +36,11 @@ public class DetailedActivity
     public required double ElevLow { get; set; }
 
     [JsonPropertyName("type")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public ActivityType? Type { get; set; }
 
     [JsonPropertyName("sport_type")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public SportType? SportType { get; set; }
 
     [JsonPropertyName("start_date")]
@@ -53,9 +53,11 @@ public class DetailedActivity
     public required string Timezone { get; set; }
 
     [JsonPropertyName("start_latlng")]
+    [JsonConverter(typeof(LatLngJsonConverter))]
     public required LatLng StartLatLng { get; set; }
 
     [JsonPropertyName("end_latlng")]
+    [JsonConverter(typeof(LatLngJsonConverter))]
     public required LatLng EndLatLng { get; set; }
 
     [JsonPropertyName("achievement_count")]
@@ -95,7 +97,7 @@ public class DetailedActivity
     public bool Flagged { get; set; }
 
     [JsonPropertyName("workout_type")]
-    public int WorkoutType { get; set; }
+    public int? WorkoutType { get; set; }
 
     [JsonPropertyName("upload_id_str")]
     public string? UploadIdStr { get; set; }
@@ -134,7 +136,7 @@ public class DetailedActivity
     public string? Description { get; set; }
 
     [JsonPropertyName("photos")]
-    public required PhotosSummary[] Photos { get; set; }
+    public PhotosSummary[]? Photos { get; set; }
 
     [JsonPropertyName("gear")]
     public required SummaryGear Gear { get; set; }

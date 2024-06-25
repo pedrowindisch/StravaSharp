@@ -2,8 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class MetaAthlete
+public class MetaAthlete : BaseMeta
 {
-    [JsonPropertyName("id")]
-    public long Id { get; set; }
+
 }
