@@ -44,7 +44,16 @@ public class StravaClient : IStravaClient, IDisposable
         return httpClient;
     }
 
-    internal async Task<T> GetAsync<T>(string url, IEnumerable<(string key, string value)> queryParameters = null, CancellationToken cancellationToken = default)
+    private void EnsureSuccessfulResponse(HttpResponseMessage response)
+    {
+        if (response.IsSuccessStatusCode)
+            return;
+
+        if (response.StatusCode == HttpStatusCode.Unauthorized)
+            throw new UnauthorizedAccessException("Unathorized access: check if the access token is valid and has the required permissions");
+    }
+
+    internal async Task<T> GetAsync<T>(string url, IEnumerable<(string key, string value)>? queryParameters = null, CancellationToken cancellationToken = default)
     {
         var query = HttpUtility.ParseQueryString(string.Empty);
         if (queryParameters is not null)
@@ -54,17 +63,7 @@ public class StravaClient : IStravaClient, IDisposable
         var uri = $"{url}?{query}";
 
         var response = await _httpClient.GetAsync(uri, cancellationToken);
-        try 
-        {
-            response.EnsureSuccessStatusCode();
-        }
-        catch (HttpRequestException e)
-        {
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-                throw new UnauthorizedAccessException("Unathorized access: check if the access token is valid and has the required permissions", e);
-
-            throw;
-        }
+        EnsureSuccessfulResponse(response);
 
         var content = await response.Content.ReadAsStringAsync();
         return JsonSerializer.Deserialize<T>(content) ?? throw new Exception("Failed to deserialize response");
@@ -76,17 +75,19 @@ public class StravaClient : IStravaClient, IDisposable
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync(url, content, cancellationToken);
-        try 
-        {
-            response.EnsureSuccessStatusCode();
-        }
-        catch (HttpRequestException e)
-        {
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-                throw new UnauthorizedAccessException("Unathorized access: check if the access token is valid and has the required permissions", e);
+        EnsureSuccessfulResponse(response);
 
-            throw;
-        }
+        var responseContent = await response.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<T>(responseContent) ?? throw new Exception("Failed to deserialize response");
+    }
+
+    internal async Task<T> PutAsync<T>(string url, object data, CancellationToken cancellationToken = default)
+    {
+        var json = JsonSerializer.Serialize(data);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PutAsync(url, content, cancellationToken);
+        EnsureSuccessfulResponse(response);
 
         var responseContent = await response.Content.ReadAsStringAsync();
         return JsonSerializer.Deserialize<T>(responseContent) ?? throw new Exception("Failed to deserialize response");

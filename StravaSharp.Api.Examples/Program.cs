@@ -16,7 +16,8 @@ var testActivity = new ActivityCreate
 {
     Name = "Test Activity",
     Description = "This is a test activity",
-    Type = ActivityType.Ride,
+    Type = ActivityType.Walk,
+    SportType = SportType.Walk,
     StartDateLocal = DateTime.Now - TimeSpan.FromDays(1),
     ElapsedTime = 3600,
     Distance = 10000,
@@ -25,4 +26,7 @@ var testActivity = new ActivityCreate
 };
 
 var createdActivity = await client.Activities.CreateActivityAsync(testActivity);
-Console.WriteLine(JsonSerializer.Serialize(createdActivity));
+var updated = await client.Activities.UpdateActivityAsync(createdActivity.Id, new ActivityUpdate
+{
+    Name = "Updated Test Activity"
+});

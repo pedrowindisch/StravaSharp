@@ -6,5 +6,5 @@ namespace StravaSharp.Api.Models.Response;
 public class MetaClub : BaseMeta
 {
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 }

@@ -6,10 +6,10 @@ namespace StravaSharp.Api.Models.Response;
 public class Route
 {
     [JsonPropertyName("athlete")]
-    public SummaryAthlete Athlete { get; set; }
+    public required SummaryAthlete Athlete { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonPropertyName("distance")]
     public double Distance { get; set; }

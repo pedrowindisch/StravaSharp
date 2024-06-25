@@ -30,10 +30,10 @@ public class DetailedActivity : BaseDetailed
     public required double TotalElevationGain { get; set; }
 
     [JsonPropertyName("elev_high")]
-    public required double ElevHigh { get; set; }
+    public double ElevHigh { get; set; }
 
     [JsonPropertyName("elev_low")]
-    public required double ElevLow { get; set; }
+    public double ElevLow { get; set; }
 
     [JsonPropertyName("type")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -136,10 +136,10 @@ public class DetailedActivity : BaseDetailed
     public string? Description { get; set; }
 
     [JsonPropertyName("photos")]
-    public PhotosSummary[]? Photos { get; set; }
+    public PhotosSummary? Photos { get; set; }
 
     [JsonPropertyName("gear")]
-    public required SummaryGear Gear { get; set; }
+    public SummaryGear? Gear { get; set; }
 
     [JsonPropertyName("calories")]
     public double Calories { get; set; }
@@ -154,14 +154,14 @@ public class DetailedActivity : BaseDetailed
     public string? EmbedToken { get; set; }
 
     [JsonPropertyName("splits_metric")]
-    public required Split[] SplitsMetric { get; set; }
+    public Split[]? SplitsMetric { get; set; }
 
     [JsonPropertyName("splits_standard")]
-    public required Split[] SplitsStandard { get; set; }
+    public Split[]? SplitsStandard { get; set; }
 
     [JsonPropertyName("laps")]
-    public required Lap[] Laps { get; set; }
+    public Lap[]? Laps { get; set; }
 
     [JsonPropertyName("best_efforts")]
-    public required DetailedSegmentEffort[] BestEfforts { get; set; }
+    public DetailedSegmentEffort[]? BestEfforts { get; set; }
 }

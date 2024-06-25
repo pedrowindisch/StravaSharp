@@ -29,24 +29,38 @@ internal class ActivitiesClient : IActivitiesClient
         );
     }
 
-    public Task<DetailedActivity> GetActivityCommentsAsync(long id, int? pageSize = null, string? afterCursor = null)
+    public async Task<Comment[]> GetActivityCommentsAsync(long id, int? pageSize = null, string? afterCursor = null)
     {
-        throw new NotImplementedException();
+        var queryParameters = new List<(string key, string value)>();
+        if (pageSize is not null)
+            queryParameters.Add(("page_size", pageSize.Value.ToString()));
+
+        if (afterCursor is not null)
+            queryParameters.Add(("after_cursor", afterCursor));
+
+        return await _stravaClient.GetAsync<Comment[]>($"activities/{id}/comments", queryParameters);
     }
 
-    public Task<DetailedActivity> GetActivityKudoersAsync(long id, int? page = null, int? perPage = null)
+    public async Task<SummaryAthlete[]> GetActivityKudoersAsync(long id, int? page = null, int? perPage = null)
     {
-        throw new NotImplementedException();
+        var queryParameters = new List<(string key, string value)>();
+        if (page is not null)
+            queryParameters.Add(("page", page.Value.ToString()));
+
+        if (perPage is not null)
+            queryParameters.Add(("per_page", perPage.Value.ToString()));
+
+        return await _stravaClient.GetAsync<SummaryAthlete[]>($"activities/{id}/kudos", queryParameters);
     }
 
-    public Task<DetailedActivity> GetActivityLapsAsync(long id)
+    public async Task<Lap[]> GetActivityLapsAsync(long id)
     {
-        throw new NotImplementedException();
+        return await _stravaClient.GetAsync<Lap[]>($"activities/{id}/laps");
     }
 
-    public Task<DetailedActivity> GetActivityZonesAsync(long id)
+    public async Task<ActivityZone[]> GetActivityZonesAsync(long id)
     {
-        throw new NotImplementedException();
+        return await _stravaClient.GetAsync<ActivityZone[]>($"activities/{id}/zones");
     }
 
     public Task<SummaryActivity[]> GetAthleteActivitiesAsync(DateTime? before = null, DateTime? after = null, int? page = null, int? perPage = null)
@@ -69,6 +83,6 @@ internal class ActivitiesClient : IActivitiesClient
 
     public Task<DetailedActivity> UpdateActivityAsync(long id, ActivityUpdate activity)
     {
-        throw new NotImplementedException();
+        return _stravaClient.PutAsync<DetailedActivity>($"activities/{id}", activity);
     }
 }

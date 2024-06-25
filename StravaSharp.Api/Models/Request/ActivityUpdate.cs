@@ -15,10 +15,10 @@ public class ActivityUpdate
     public bool HideFromHome { get; set; }
 
     [JsonPropertyName("description")]
-    public required string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonPropertyName("name")]
-    public required string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("type")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
