@@ -18,16 +18,16 @@ public class Route
     public double ElevationGain { get; set; }
 
     [JsonPropertyName("id")]
-    public long Id { get; set; }
+    public required long Id { get; set; }
 
     [JsonPropertyName("id_str")]
-    public string IdStr { get; set; }
+    public required string IdStr { get; set; }
 
     [JsonPropertyName("map")]
-    public PolylineMap Map { get; set; }
+    public required PolylineMap Map { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [JsonPropertyName("private")]
     public bool Private { get; set; }
@@ -40,11 +40,11 @@ public class Route
 
     [JsonPropertyName("type")]
     [AllowedValues([1, 2])]
-    public string Type { get; set; }
+    public required int Type { get; set; }
 
     [JsonPropertyName("sub_type")]
     [AllowedValues([1, 2, 3, 4, 5])]
-    public string SubType { get; set; }
+    public required int SubType { get; set; }
 
     [JsonPropertyName("created_at")]
     public DateTime CreatedAt { get; set; }
@@ -56,8 +56,8 @@ public class Route
     public int EstimatedMovingTime { get; set; }
 
     [JsonPropertyName("segments")]
-    public SummarySegment[] Segments { get; set; }
+    public required SummarySegment[] Segments { get; set; }
 
     [JsonPropertyName("waypoints")]
-    public Waypoint Waypoints { get; set; }
+    public Waypoint[]? Waypoints { get; set; }
 }

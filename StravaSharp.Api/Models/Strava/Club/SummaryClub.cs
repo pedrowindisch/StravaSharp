@@ -3,10 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class SummaryClub : BaseSummary
+public class SummaryClub : MetaClub
 {
-    [JsonPropertyName("name")]
-    public required string Name { get; set; }
+   [JsonPropertyName("resource_state")]
+    public override ResourceState ResourceState { get; set; } = ResourceState.Summary;
 
     [JsonPropertyName("profile_medium")]
     public string? ProfileMedium { get; set; }

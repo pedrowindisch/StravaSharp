@@ -3,16 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class DetailedGear : BaseDetailed
+public class DetailedGear : SummaryGear
 {
-    [JsonPropertyName("primary")]
-    public bool Primary { get; set; }
-
-    [JsonPropertyName("name")]
-    public required string Name { get; set; }
-
-    [JsonPropertyName("distance")]
-    public required double Distance { get; set; }
+    [JsonPropertyName("resource_state")]
+    public override ResourceState ResourceState { get; set; } = ResourceState.Detailed;
 
     [JsonPropertyName("brand_name")]
     public string? BrandName { get; set; }

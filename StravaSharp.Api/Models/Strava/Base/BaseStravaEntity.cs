@@ -3,8 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public abstract class BaseSummary : BaseMeta
+public abstract class BaseStravaEntity
 {
+    [JsonPropertyName("id")]
+    public long Id { get; set; }
+
+
     [JsonPropertyName("resource_state")]
-    public new ResourceState ResourceState { get; set; } = ResourceState.Summary;
+    public abstract ResourceState ResourceState { get; set; }
 }

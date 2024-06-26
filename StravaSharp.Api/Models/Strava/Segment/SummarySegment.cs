@@ -4,8 +4,11 @@ using StravaSharp.Api.Commons.JsonConverters;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class SummarySegment : BaseSummary
+public class SummarySegment : BaseStravaEntity
 {
+    [JsonPropertyName("resource_state")]
+    public override ResourceState ResourceState { get; set; } = ResourceState.Summary;
+
     [JsonPropertyName("name")]
     public required string Name { get; set; }
 
@@ -53,8 +56,8 @@ public class SummarySegment : BaseSummary
     public bool Private { get; set; }
 
     [JsonPropertyName("athlete_pr_effort")]
-    public SummaryPRSegmentEffort AthletePrEffort { get; set; }
+    public SummaryPRSegmentEffort? AthletePrEffort { get; set; }
 
     [JsonPropertyName("athlete_segment_stats")]
-    public SummarySegmentEffort AthleteSegmentStats { get; set; }
+    public SummarySegmentEffort? AthleteSegmentStats { get; set; }
 }

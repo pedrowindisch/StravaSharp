@@ -2,8 +2,11 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class SummarySegmentEffort : BaseSummary
+public class SummarySegmentEffort : BaseStravaEntity
 {
+    [JsonPropertyName("resource_state")]
+    public override ResourceState ResourceState { get; set; } = ResourceState.Summary;
+
     [JsonPropertyName("activity_id")]
     public long ActivityId { get; set; }
 

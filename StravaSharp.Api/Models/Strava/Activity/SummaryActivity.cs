@@ -3,10 +3,11 @@ using StravaSharp.Api.Commons.JsonConverters;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class SummaryActivity
+public class SummaryActivity : MetaActivity
 {
-    [JsonPropertyName("id")]
-    public required long Id { get; set; }
+
+    [JsonPropertyName("resource_state")]
+    public override ResourceState ResourceState { get; set; } = ResourceState.Summary;
 
     [JsonPropertyName("external_id")]
     public required string ExternalId { get; set; }

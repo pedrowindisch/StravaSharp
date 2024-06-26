@@ -3,8 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace StravaSharp.Api.Models.Response;
 
-public class SummaryAthlete : BaseSummary
+public class SummaryAthlete : MetaAthlete
 {
+
+    [JsonPropertyName("resource_state")]
+    public override ResourceState ResourceState { get; set; } = ResourceState.Summary;
+
     [JsonPropertyName("firstname")]
     public required string FirstName { get; set; }
 
