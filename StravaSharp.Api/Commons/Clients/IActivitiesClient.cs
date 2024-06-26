@@ -1,4 +1,4 @@
-using StravaSharp.Api.Models.Response;
+using StravaSharp.Api.Models.Strava;
 using StravaSharp.Api.Models.Request;
 using System.Diagnostics;
 

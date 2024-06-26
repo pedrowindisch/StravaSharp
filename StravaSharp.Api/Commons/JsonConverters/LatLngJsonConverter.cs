@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using StravaSharp.Api.Models.Response;
+using StravaSharp.Api.Models.Strava;
 
 namespace StravaSharp.Api.Commons.JsonConverters;
 

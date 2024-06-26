@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace StravaSharp.Api.Models.Response;
+namespace StravaSharp.Api.Models.Strava;
 
 public class TimedZoneRange
 {

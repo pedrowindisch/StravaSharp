@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using StravaSharp.Api.Commons.JsonConverters;
 
-namespace StravaSharp.Api.Models.Response;
+namespace StravaSharp.Api.Models.Strava;
 
 public class DetailedActivity : SummaryActivity
 {   

@@ -2,7 +2,7 @@ using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace StravaSharp.Api.Models.Response.Base;
+namespace StravaSharp.Api.Models.Strava.Base;
 
 public abstract class BaseStream<T> where T : IEnumerable
 {

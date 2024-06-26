@@ -1,7 +1,7 @@
 using StravaSharp.Api.Commons.Clients;
 using StravaSharp.Api.Commons.Extensions;
 using StravaSharp.Api.Models.Request;
-using StravaSharp.Api.Models.Response;
+using StravaSharp.Api.Models.Strava;
 
 namespace StravaSharp.Api.Clients;
 
