@@ -7,23 +7,32 @@ StravaSharp is a .NET library for the Strava API. It is intended to provide an e
 
 ## Example usage
 
-In order to use the library, you need to create a `StravaClient` object with your access token. You can then use the client to make requests to the Strava API. Please note that you need to have a valid access token to use the library - you can find more information on how to get one [here](https://developers.strava.com/docs/getting-started/). This library does not provide any functionality to get an access token [yet](#future-plans).
+In order to use the library, you need to create a `StravaClient` object with a valid IAuthenticator implementation. You can then use the client to make requests to the Strava API. 
+
+The library provides two implementations of the IAuthenticator interface: `StaticAuthenticator` and `WebAuthenticator`. The `StaticAuthenticator` is used to authenticate with a static access token provided by the user, while the `WebAuthenticator` is used to authenticate with an access token obtained through a browser-based login flow. Note that the `WebAuthenticator` requires a client ID and a client secret, which you can obtain by registering your application with Strava [here](https://www.strava.com/settings/api).
+
+Both methods are relatively simple to use. Just note that their usage is slightly different and they are not interchangeable.
 
 ```csharp
-StravaClient client = new StravaClient("your access token");
-var activies = await client.Activities.GetAthleteActivitiesAsync();
+// StaticAuthenticator
+var authenticator = new StaticAuthenticator("your access token");
+var client = new StravaClient(authenticator);
 
-foreach (var activity in activies)
-{
-    Console.WriteLine(activity.Name);
-}
+// WebAuthenticator
+var config = new StravaConfig("CLIENT_ID", "CLIENT_SECRET");
+var authenticator = new WebAuthenticator(config);
+var client = new StravaClient(authenticator);
+
+// ... use the client to make requests to the Strava API
 ```
 
-You can find more examples in the [examples](examples) folder.
+You can find more examples in the [samples](StravaSharp.Samples) folder.
+
+Please note that the library is still a work in progress, and some features may not be implemented yet. One of those features is the ability to refresh an access token. This means that you will have to manually refresh the access token when it expires.
 
 ## Future plans
 
-So far, the library only supports a few endpoints of the Strava API. I plan to add more endpoints in the future, as well as improve the existing ones. I also plan to add support for getting an access token, as well as refreshing it.
+So far, the library only supports a few endpoints of the Strava API. I plan to add more endpoints in the future, as well as improve the existing ones.
 
 ## Resources
 

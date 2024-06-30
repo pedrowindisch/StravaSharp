@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StravaSharp.Api", "StravaSharp.Api\StravaSharp.Api.csproj", "{5DAE62EF-33DE-4B80-9554-94AD3F399C6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StravaSharp.Auth", "StravaSharp.Auth\StravaSharp.Auth.csproj", "{59DDCF3B-D62A-47E5-8EDC-73C3C996AABB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StravaSharp.Samples", "StravaSharp.Samples", "{F63FD3BC-591C-4686-AB9F-EC33464AA9C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StravaSharp.Samples.WebAuthentication", "StravaSharp.Samples\StravaSharp.Samples.WebAuthentication\StravaSharp.Samples.WebAuthentication.csproj", "{93ECCB68-CA73-4520-8393-124BF70CED76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,16 @@ Global
 		{5DAE62EF-33DE-4B80-9554-94AD3F399C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DAE62EF-33DE-4B80-9554-94AD3F399C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DAE62EF-33DE-4B80-9554-94AD3F399C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DDCF3B-D62A-47E5-8EDC-73C3C996AABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DDCF3B-D62A-47E5-8EDC-73C3C996AABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DDCF3B-D62A-47E5-8EDC-73C3C996AABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DDCF3B-D62A-47E5-8EDC-73C3C996AABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93ECCB68-CA73-4520-8393-124BF70CED76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93ECCB68-CA73-4520-8393-124BF70CED76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93ECCB68-CA73-4520-8393-124BF70CED76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93ECCB68-CA73-4520-8393-124BF70CED76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{93ECCB68-CA73-4520-8393-124BF70CED76} = {F63FD3BC-591C-4686-AB9F-EC33464AA9C2}
 	EndGlobalSection
 EndGlobal

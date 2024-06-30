@@ -4,31 +4,24 @@ using System.Text;
 using System.Text.Json;
 using System.Web;
 using StravaSharp.Api.Commons.Clients;
+using StravaSharp.Auth.Models;
 
 namespace StravaSharp.Api.Clients;
 
 public class StravaClient : IStravaClient, IDisposable
 {
     private readonly HttpClient _httpClient;
-    private string _accessToken;
+    private Tokens _tokens;
 
-    public StravaClient(string accessToken)
+    public IActivitiesClient Activities { get; }
+
+    public StravaClient(Tokens tokens)
     {
-        _accessToken = accessToken;
+        _tokens = tokens; 
         _httpClient = CreateHttpClient();
 
         Activities = new ActivitiesClient(this);
     }
-
-    public IActivitiesClient Activities { get; }
-    // public IStravaAthletesClient Athletes => new StravaAthletesClient(_httpClient, _accessToken);
-    // public IStravaClubsClient Clubs => new StravaClubsClient(_httpClient, _accessToken);
-    // public IStravaGearClient Gear => new StravaGearClient(_httpClient, _accessToken);
-    // public IStravaRoutesClient Routes => new StravaRoutesClient(_httpClient, _accessToken);
-    // public IStravaSegmentEffortsClient SegmentEfforts => new StravaSegmentEffortsClient(_httpClient, _accessToken);
-    // public IStravaSegmentsClient Segments => new StravaSegmentsClient(_httpClient, _accessToken);
-    // public IStravaStreamsClient Streams => new StravaStreamsClient(_httpClient, _accessToken);
-    // public IStravaUploadsClient Uploads => new StravaUploadsClient(_httpClient, _accessToken);
 
     private HttpClient CreateHttpClient()
     {
@@ -37,7 +30,7 @@ public class StravaClient : IStravaClient, IDisposable
             BaseAddress = new Uri("https://www.strava.com/api/v3/"),
             DefaultRequestHeaders =
             {
-                Authorization = new AuthenticationHeaderValue("Bearer", _accessToken)
+                Authorization = new AuthenticationHeaderValue("Bearer", _tokens.AccessToken)
             }
         };
 
