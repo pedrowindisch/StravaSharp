@@ -34,6 +34,10 @@ Please note that the library is still a work in progress, and some features may 
 
 So far, the library only supports a few endpoints of the Strava API. I plan to add more endpoints in the future, as well as improve the existing ones.
 
+## ...NuGet package?
+
+The library is not yet available as a NuGet package. I don't plan to publish it, as it was created as a learning project. However, you can clone the repository and build the library yourself.
+
 ## Resources
 
 - [Strava API documentation](https://developers.strava.com/docs/reference/)
